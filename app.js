@@ -49,8 +49,11 @@ function handleGuess(correctSpot, userGuess) {
         //totalEl.textContent(totalGuesses);
         //lossesEl.textContent(incorrectGuesses);
         //winsEl.textContent(correctGuesses);
-        console.log(totalGuesses, incorrectGuesses, correctGuesses)
-
+        console.log(totalGuesses, incorrectGuesses, correctGuesses);
+        
+    } else {
+        incorrectGuesses++;
+        console.log(totalGuesses, incorrectGuesses, correctGuesses);
     }
         // then grab the appropriate container element for the correct guess from the DOM
     
