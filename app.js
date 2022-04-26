@@ -14,8 +14,10 @@ const winsEl = document.getElementById('wins');
 // initialize state
 const hidingPlaces = ['tree', 'shed', 'boulder'];
 
+
 let correctGuesses = 0;
 let totalGuesses = 0;
+let incorrectGuesses = totalGuesses - correctGuesses;
 
 shedButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
@@ -36,10 +38,43 @@ boulderButton.addEventListener('click', () => {
 });
 
 function handleGuess(correctSpot, userGuess) {
-    // reset the styles
-    // then increment the guesses
-    // then grab the appropriate container element for the correct guess from the DOM
+        // reset the styles
+    boulderContainer.classList.remove ('face');
+    shedContainer.classList.remove ('face');
+    treeContainer.classList.remove ('face');
+    
+        // then increment the guesses
+    totalGuesses++;
+    //console.log(totalGuesses)
+    
+    if (correctSpot === userGuess) {
+        correctGuesses++;
+        //console.log(totalGuesses, incorrectGuesses, correctGuesses);
+    
+    } else {
+        incorrectGuesses++;
+        //console.log(totalGuesses, incorrectGuesses, correctGuesses);
+    }
+    totalEl.textContent = totalGuesses;
+    lossesEl.textContent = incorrectGuesses;
+    winsEl.textContent = correctGuesses;
+
+    if (correctSpot === 'tree') {
+        treeContainer.classList.add ('face');
+    } else if (correctSpot === 'shed') {
+        shedContainer.classList.add ('face');
+    } else if (correctSpot === 'boulder') {
+        boulderContainer.classList.add ('face');
+    }
+}
+        // then grab the appropriate container element for the correct guess from the DOM
+
+    
+
+
+
+
     // then add the face class to that element so that the face shows up
     // then if the user guess is correct, increment the correct guesses
     // update the DOM to show this change to the user (including the losses, not tracked directly in state)
-}
+
